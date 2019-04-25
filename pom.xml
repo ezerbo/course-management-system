@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.umuc.swen</groupId>
+	<artifactId>course-management-system</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Course Management System</name>
+	<description>A system to help faculty manage their course for a particular term</description>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<inceptionYear>2019</inceptionYear>
+	<developers>
+		<developer>
+			<email>bzerbo@student.umuc.edu</email>
+			<name>Edouard B. ZERBO</name>
+			<organization>University of Maryland University College</organization>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
