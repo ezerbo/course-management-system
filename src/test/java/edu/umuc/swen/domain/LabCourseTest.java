@@ -16,7 +16,7 @@ import edu.umuc.swen.error.InvalidStudentOperationException;
  * @author ezerbo
  *
  */
-public class LabCourseTests {
+public class LabCourseTest {
 	
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
@@ -121,7 +121,7 @@ public class LabCourseTests {
 	@Test
 	public void addStudentThrowsExceptionWhenCourseIsFull() {
 		expectedException.expect(InvalidStudentOperationException.class);
-		expectedException.expectMessage("Unable to add students to this course, the maximum number of students (20) has been reached");
+		expectedException.expectMessage("Unable to add students to this course, the maximum number of students (10) has been reached");
 		Location classroomLocation = new Location("2E", "1019", getAddress());
 		Location labRoomLocation = new Location("5E", "1019", getAddress());
 		//Course starts and ends in the future
@@ -136,6 +136,16 @@ public class LabCourseTests {
 		
 		//Try adding 11 students
 		course.addStudent(new Student(11, "Sherlock", "Holmes", 4.0, "sherlock.holmes@bekerstreet.com", getAddress()));
+	}
+	
+	@Test
+	public void loadStudent() {
+		Address address = new Address("221-B", "Baker Street", "London", "UK", "188000");
+		Location location = new Location("2E", "1019", address);
+		Course course = new LabCourse(1, "MATH101", new Date(System.currentTimeMillis() + 86400000), new Date(System.currentTimeMillis() + 2 * 86400000), "T TH",
+				"6:00PM - 6:30PM", "FL2019", location, location);
+		course.loadStudents("./src/test/resources/test-data/students.txt");
+		assertEquals(2, course.getStudents().size());
 	}
 	
 	private LabCourse getCourse() {

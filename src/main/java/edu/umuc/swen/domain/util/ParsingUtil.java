@@ -21,9 +21,13 @@ public class ParsingUtil {
 	 * @return the value of 'propertyName'
 	 */
 	public static String getPropertyValue(String line, String property) {
-		String startingNode = String.format("<%s>", property);
-		String endingNode = String.format("</%s>", property);
-		return line.substring(line.indexOf(startingNode) + startingNode.length(), line.indexOf(endingNode));
+		try {
+			String startingNode = String.format("<%s>", property);
+			String endingNode = String.format("</%s>", property);
+			return line.substring(line.indexOf(startingNode) + startingNode.length(), line.indexOf(endingNode));
+		} catch (StringIndexOutOfBoundsException e) {
+			return null; //Return null when property not found
+		}
 	}
 	
 	public static Date parseDate(String date) {

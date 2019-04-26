@@ -8,7 +8,7 @@ import org.junit.Test;
  * @author ezerbo
  *
  */
-public class LocationTests {
+public class LocationTest {
 
 	private String formattedValue = "<location><roomnumber>10</roomnumber><buildingname>Holmes</buildingname>" + 
 			"<address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city>" + 

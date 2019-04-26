@@ -1,0 +1,4 @@
+<students>
+<student><id>1</id><firstname>Edward</firstname><lastname>Newgates</lastname><overallgpa>4.0</overallgpa><emailaddress>edward.newgates@onepiece.com</emailaddress><mailingaddress><address><buildingnumber>1999</buildingnumber><street>East Blue Street</street><city>Grand Line</city><state>Japan</state><zipcode>188000</zipcode></address></mailingaddress></student>
+<student><id>2</id><firstname>Trafalgar</firstname><lastname>D. Water Law</lastname><overallgpa>4.0</overallgpa><emailaddress>trafalgar.law@onepiece.com</emailaddress><mailingaddress><address><buildingnumber>1999</buildingnumber><street>East Blue Street</street><city>Grand Line</city><state>Japan</state><zipcode>188000</zipcode></address></mailingaddress></student>
+</students>

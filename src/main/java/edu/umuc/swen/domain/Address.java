@@ -3,6 +3,8 @@ package edu.umuc.swen.domain;
 import static edu.umuc.swen.domain.util.ParsingUtil.getPropertyValue;
 
 /**
+ * Domain class modeling an address
+ * 
  * @author ezerbo
  *
  */
@@ -18,6 +20,11 @@ public class Address {
 	
 	private String zipCode;
 	
+	/**
+	 * Create an instance of Address using its string representation
+	 * 
+	 * @param line String to parse address data from
+	 */
 	public Address(String line) {
 		this.buildingNumber = getPropertyValue(line, "buildingnumber");
 		this.street = getPropertyValue(line, "street");
@@ -35,42 +42,72 @@ public class Address {
 		this.zipCode = zipCode;
 	}
 
+	/**
+	 * @return buildingNumber The building number
+	 */
 	public String getBuildingNumber() {
 		return buildingNumber;
 	}
 
+	/**
+	 * @param buildingNumber The building number
+	 */
 	public void setBuildingNumber(String buildingNumber) {
 		this.buildingNumber = buildingNumber;
 	}
 
+	/**
+	 * @return street The street
+	 */
 	public String getStreet() {
 		return street;
 	}
 
+	/**
+	 * @param street The street
+	 */
 	public void setStreet(String street) {
 		this.street = street;
 	}
 
+	/**
+	 * @return city The city
+	 */
 	public String getCity() {
 		return city;
 	}
 
+	/**
+	 * @param city The city
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
+	/**
+	 * @return state The state
+	 */
 	public String getState() {
 		return state;
 	}
 
+	/**
+	 * @param state The state
+	 */
 	public void setState(String state) {
 		this.state = state;
 	}
 
+	/**
+	 * @return zipCode The zip code
+	 */
 	public String getZipCode() {
 		return zipCode;
 	}
 
+	/**
+	 * @param zipCode The zip code
+	 */
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
@@ -79,6 +116,11 @@ public class Address {
 		return new Address(buildingNumber, street, city, state, zipCode);
 	}
 	
+	/**
+	 * Formats the current address (example: 221-B Baker Street London UK 188000)
+	 * 
+	 * @return formattedAddress
+	 */
 	public String format() {
 		return new StringBuilder()
 				.append(buildingNumber)

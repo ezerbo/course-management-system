@@ -30,10 +30,16 @@ public class OnlineCourse extends Course {
 				.toString();
 	}
 	
+	/**
+	 * @return the url
+	 */
 	public String getUrl() {
 		return url;
 	}
 	
+	/**
+	 * @param url the url to set
+	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}

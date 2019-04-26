@@ -3,6 +3,7 @@
  */
 package edu.umuc.swen.domain;
 
+import static edu.umuc.swen.domain.util.FileUtil.loadFromFile;
 import static edu.umuc.swen.domain.util.ParsingUtil.format;
 import static edu.umuc.swen.domain.util.ParsingUtil.getPropertyValue;
 import static edu.umuc.swen.domain.util.ParsingUtil.parseDate;
@@ -15,17 +16,23 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import edu.umuc.swen.error.InvalidStudentOperationException;
 
 /**
+ * Domain class modeling a course
+ * 
  * @author ezerbo
  *
  */
 public abstract class Course {
 	
-	private final static int CLASS_SIZE = 20;
+	/**
+	 *  Maximum number of students that can be added to course, set to 20
+	 */
+	private final static int MAX_NUMBER_OF_STUDENTS = 20;
 	
 	protected int id;
 	
@@ -45,6 +52,11 @@ public abstract class Course {
 	
 	protected String termCode;
 	
+	/**
+	 * Creates an instance of Course using its string representation
+	 * 
+	 * @param line String to parse course data from
+	 */
 	public Course (String line) {
 		this.id = parseInt(getPropertyValue(line, "id"));
 		this.name = getPropertyValue(line, "name");
@@ -82,6 +94,11 @@ public abstract class Course {
 		
 	}
 	
+	/**
+	 * Generate the schedule (example: Days: T TH, Times: 6:00PM - 6:30PM)
+	 * 
+	 * @return courseSchedule
+	 */
 	public String generateSchedule() {
 		return new StringBuilder()
 				.append("Days: " + meetingDays)
@@ -101,7 +118,7 @@ public abstract class Course {
 			throw new InvalidStudentOperationException(
 					String.format("Unable to add students to this course, it has already ended on %s", format(endDate)));
 		
-		if(students.size() == CLASS_SIZE)
+		if(isCourseFull())
 			throw new InvalidStudentOperationException(
 					String.format("Unable to add students to this course, the maximum number of students (20) has been reached", format(endDate)));
 		
@@ -109,10 +126,12 @@ public abstract class Course {
 	}
 	
 	/**
+	 * Updates a student's GPA
+	 * 
 	 * @param studentId Identifier of the student (example: 1)
 	 * @param gpa New GPA (example: 4.0)
 	 */
-	public void changeStudentGpa(int studentId, double gpa) {
+	public void changeStudentGpa(Integer studentId, Double gpa) {
 		if(students.stream().anyMatch(s -> (s.getId() == studentId))) { //If student exists
 			gradebook.put(studentId, gpa);
 		} else {
@@ -122,7 +141,7 @@ public abstract class Course {
 	}
 	
 	/**
-	 * Removes a student from this course
+	 * Removes a student from a course
 	 * 
 	 * @param studentId Identifier of the student to be removed
 	 * @throws InvalidStudentOperationException When course has already started
@@ -135,21 +154,66 @@ public abstract class Course {
 		students.removeIf(e -> (e.getId() == studentId));
 	}
 	
+	/**
+	 * Loads students from a file
+	 * 
+	 * @param fileName File to load students from
+	 */
 	public void loadStudents(String fileName) {
+		if(hasEnded()) {
+			throw new InvalidStudentOperationException(
+					String.format("Unable to add students to this course, it has already ended on %s", format(endDate)));
+		}
 		
+		if(isCourseFull()) {
+			throw new InvalidStudentOperationException("Unable to add students to this course, the maximum number of students (20) has been reached");
+		}
+		
+		String studentLines = getPropertyValue(loadFromFile(fileName), "students");
+		List<Student> laodedStudents = parseStudents(studentLines);
+		if(laodedStudents.size() + students.size() > MAX_NUMBER_OF_STUDENTS) {
+			throw new InvalidStudentOperationException("Unable to add students to this course, the maximum number of students (20) has been reached");
+		}
+		students.addAll(laodedStudents);
 	}
 	
-	private List<Student> parseStudents(String students) {
-		return Arrays.stream(students.split("\n"))
-				.filter(e -> !e.isEmpty())
+	/**
+	 * Test whether a course is full (maximum number of students reached)
+	 * 
+	 * @return isCourseFull
+	 */
+	private boolean isCourseFull() {
+		return students.size() == MAX_NUMBER_OF_STUDENTS;
+	}
+
+	/**
+	 * Parses student records, separated by new lines, from a string.
+	 * It returns an empty list when no student records are found
+	 * Otherwise, it splits the string passed as parameter and for each student record,
+	 * it creates an instance of {@Student}.
+	 * It then collects all the records into a list and returns it.
+	 * 
+	 * 
+	 * @param students String to parse student records from
+	 * @return students A list of students
+	 */
+	protected List<Student> parseStudents(String students) {
+		if(Objects.isNull(students)) return new LinkedList<>(); // When the course is missing students
+		return Arrays.stream(students.split("\n")).filter(e -> !e.isEmpty())
 				.map(studentLine -> new Student(studentLine))
 				.collect(Collectors.toList());
 	}
 	
+	/**
+	 * Parses gradebook records, separated by new lines, from a string
+	 * 
+	 * @param gradebook string to parse gradebook records from
+	 * @return gradebook The Gradebook
+	 */
 	private Map<Integer, Double> parseGradebook(String gradebook) {
+		if(Objects.isNull(gradebook)) return new HashMap<>(); // When the course is missing students
 		Map<Integer, Double> grades = new HashMap<>();
-		Arrays.stream(gradebook.split("\n"))
-		.filter(e -> !e.isEmpty())
+		Arrays.stream(gradebook.split("\n")).filter(e -> !e.isEmpty())
 		.forEach(gradebookEntry -> {
 			Integer studentId = parseInt(getPropertyValue(gradebookEntry, "studentid"));
 			Double gpa = parseDouble(getPropertyValue(gradebookEntry, "gpa"));
@@ -158,66 +222,26 @@ public abstract class Course {
 		return grades;
 	}
 	
-	public String toString() {
-		return new StringBuilder()
-				.append("<id>")
-				.append(id)
-				.append("</id>")
-				.append("<termcode>")
-				.append(termCode)
-				.append("</termcode>")
-				.append("<name>")
-				.append(name)
-				.append("</name>")
-				.append("<startdate>")
-				.append(format(startDate))
-				.append("</startdate>")
-				.append("<enddate>")
-				.append(format(endDate))
-				.append("</enddate>")
-				.append("<meetingdays>")
-				.append(meetingDays)
-				.append("</meetingdays>")
-				.append("<meetingtimes>")
-				.append(meetingTimes)
-				.append("</meetingtimes>")
-				.append("\n<students>\n")
-				.append(formatStudentRecords())
-				.append("\n</students>\n")
-				.append("<gradebook>\n")
-				.append(formatGradebookRecords())
-				.append("\n</gradebook>\n")
-				.toString();
-	}
-	
 	/**
-	 * @return
+	 * Test whether a course has started
+	 * 
+	 * @return indicator 
 	 */
-	private String formatStudentRecords() {
-		return students.stream()
-				.map(Student::toString)
-				.collect(Collectors.joining("\n"));
-	}
-	
-	/**
-	 * @return
-	 */
-	private String formatGradebookRecords() {
-		return gradebook.entrySet().stream()
-				.map(e -> String.format("<grade><studentid>%s</studentid><gpa>%s</gpa></grade>", e.getKey(), e.getValue()))
-				.collect(Collectors.joining("\n"));
-	}
-	
 	protected boolean hasStarted() {
 		return new Date().after(startDate);
 	}
 	
+	/**
+	 * Test whether a course has ended
+	 * 
+	 * @return indicator
+	 */
 	protected boolean hasEnded() {
 		return new Date().after(endDate);
 	}
 	
 	/**
-	 * @return the termCode
+	 * @return the termCode The term code
 	 */
 	public String getTermCode() {
 		return termCode;
@@ -284,6 +308,62 @@ public abstract class Course {
 	 */
 	public Map<Integer, Double> getGradebook() {
 		return new HashMap<>(gradebook);
+	}
+	
+	public String toString() {
+		return new StringBuilder()
+				.append("<id>")
+				.append(id)
+				.append("</id>")
+				.append("<termcode>")
+				.append(termCode)
+				.append("</termcode>")
+				.append("<name>")
+				.append(name)
+				.append("</name>")
+				.append("<startdate>")
+				.append(format(startDate))
+				.append("</startdate>")
+				.append("<enddate>")
+				.append(format(endDate))
+				.append("</enddate>")
+				.append("<meetingdays>")
+				.append(meetingDays)
+				.append("</meetingdays>")
+				.append("<meetingtimes>")
+				.append(meetingTimes)
+				.append("</meetingtimes>")
+				.append("\n<students>\n")
+				.append(formatStudentRecords())
+				.append("\n</students>\n")
+				.append("<gradebook>\n")
+				.append(formatGradebookRecords())
+				.append("\n</gradebook>\n")
+				.toString();
+	}
+	
+	/**
+	 * Formats the student records.
+	 * Call toString on each student record, concatenate it with a new line, collect the result
+	 * into a list and return it.
+	 * 
+	 * @return The formated student records
+	 */
+	private String formatStudentRecords() {
+		return students.stream()
+				.map(Student::toString)
+				.collect(Collectors.joining("\n"));
+	}
+	
+	/**
+	 * Formats the gradebook records
+	 * 
+	 * @return The formatted gradebook records
+	 */
+	private String formatGradebookRecords() {
+		return gradebook.entrySet().stream()
+				.map(e -> String.format("<grade><studentid>%s</studentid><gpa>%s</gpa></grade>", e.getKey(), e.getValue()))
+				.collect(Collectors.joining("\n"));
 	}
 	
 }

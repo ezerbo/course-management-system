@@ -16,7 +16,7 @@ import edu.umuc.swen.error.InvalidStudentOperationException;
  * @author ezerbo
  *
  */
-public class HybridCourseTests {
+public class HybridCourseTest {
 	
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
@@ -101,8 +101,8 @@ public class HybridCourseTests {
 		Student student2 = new Student(2, "Sherlock2", "Holmes2", 3.0, "sherlock.holmes@bekerstreet.com2", getAddress());
 		hybridCourse.addStudent(student1);
 		hybridCourse.addStudent(student2);
-		hybridCourse.changeStudentGpa(1, 4);
-		hybridCourse.changeStudentGpa(2, 3);
+		hybridCourse.changeStudentGpa(1, 4D);
+		hybridCourse.changeStudentGpa(2, 3D);
 		assertEquals(3.5, hybridCourse.calculateAverageGpa(), 0);
 	}
 	
@@ -111,7 +111,7 @@ public class HybridCourseTests {
 		expectedException.expect(RuntimeException.class);
 		expectedException.expectMessage("No student found with id: 10");
 		HybridCourse hybridCourse = getCourse();
-		hybridCourse.changeStudentGpa(10, 4);
+		hybridCourse.changeStudentGpa(10, 4D);
 	}
 	
 	@Test
@@ -178,6 +178,16 @@ public class HybridCourseTests {
 		
 		//Try adding 21 students
 		course.addStudent(new Student(21, "Sherlock", "Holmes", 4.0, "sherlock.holmes@bekerstreet.com", getAddress()));
+	}
+	
+	@Test
+	public void loadStudent() {
+		Address address = new Address("221-B", "Baker Street", "London", "UK", "188000");
+		Location classroomLocation = new Location("2E", "1019", address);
+		Course course = new HybridCourse(1, "MATH101", new Date(System.currentTimeMillis() + 86400000), new Date(System.currentTimeMillis() + 2 * 86400000), "T TH",
+				"6:00PM - 6:30PM", "FL2019", "https://swen-646.umuc.edu", classroomLocation);
+		course.loadStudents("./src/test/resources/test-data/students.txt");
+		assertEquals(2, course.getStudents().size());
 	}
 	
 	private HybridCourse getCourse() {

@@ -1,0 +1,43 @@
+<term>
+<termcode>FL2019</termcode>
+<courses>
+<hybridcourse>
+<id>1</id><termcode>FL2019</termcode><name>MATH101</name><startdate>04/24/2020</startdate><enddate>04/24/2020</enddate><meetingdays>T TH</meetingdays><meetingtimes>6:00PM - 6:30PM</meetingtimes>
+<students>
+<student><id>1</id><firstname>Sherlock1</firstname><lastname>Holmes1</lastname><overallgpa>4.0</overallgpa><emailaddress>sherlock.holmes@bekerstreet.com1</emailaddress><mailingaddress><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></mailingaddress></student>
+</students>
+<gradebook>
+<grade><studentid>1</studentid><gpa>4.0</gpa></grade>
+</gradebook>
+<url>https://swen-646.umuc.edu</url>
+<classroomlocation>
+<location><roomnumber>2E</roomnumber><buildingname>1019</buildingname><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></location>
+</classroomlocation>
+</hybridcourse>
+<onlinecourse>
+<id>2</id><termcode>FL2019</termcode><name>MATH101</name><startdate>04/24/2020</startdate><enddate>04/24/2020</enddate><meetingdays>T TH</meetingdays><meetingtimes>6:00PM - 6:30PM</meetingtimes>
+<students>
+<student><id>2</id><firstname>Sherlock2</firstname><lastname>Holmes2</lastname><overallgpa>3.9</overallgpa><emailaddress>sherlock.holmes@bekerstreet.com2</emailaddress><mailingaddress><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></mailingaddress></student>
+</students>
+<gradebook>
+<grade><studentid>2</studentid><gpa>3.9</gpa></grade>
+</gradebook>
+<url>https://swen-646.umuc.edu</url>
+</onlinecourse>
+<labcourse>
+<id>3</id><termcode>FL2019</termcode><name>MATH101</name><startdate>04/24/2020</startdate><enddate>04/24/2020</enddate><meetingdays>T TH</meetingdays><meetingtimes>6:00PM - 6:30PM</meetingtimes>
+<students>
+<student><id>3</id><firstname>Sherlock3</firstname><lastname>Holmes3</lastname><overallgpa>3.8</overallgpa><emailaddress>sherlock.holmes@bekerstreet.com3</emailaddress><mailingaddress><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></mailingaddress></student>
+</students>
+<gradebook>
+<grade><studentid>3</studentid><gpa>3.8</gpa></grade>
+</gradebook>
+<classroomlocation>
+<location><roomnumber>2E</roomnumber><buildingname>1019</buildingname><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></location>
+</classroomlocation>
+<labroomlocation>
+<location><roomnumber>2E</roomnumber><buildingname>1019</buildingname><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></location>
+</labroomlocation>
+</labcourse>
+</courses>
+</term>

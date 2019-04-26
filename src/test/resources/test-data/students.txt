@@ -1,0 +1,4 @@
+<students>
+<student><id>1</id><firstname>Sherlock</firstname><lastname>Holmes</lastname><overallgpa>4.0</overallgpa><emailaddress>sherlock.holmes@bekerstreet.com</emailaddress><mailingaddress><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></mailingaddress></student>
+<student><id>2</id><firstname>Sherlock</firstname><lastname>Holmes</lastname><overallgpa>3.0</overallgpa><emailaddress>sherlock.holmes@bekerstreet.com</emailaddress><mailingaddress><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></mailingaddress></student>
+</students>

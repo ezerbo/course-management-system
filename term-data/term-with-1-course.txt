@@ -1,0 +1,16 @@
+<term>
+<termcode>FL2019</termcode>
+<courses>
+<hybridcourse>
+<id>1</id><termcode>FL2019</termcode><name>MATH101</name><startdate>04/25/2020</startdate><enddate>04/25/2020</enddate><meetingdays>T TH</meetingdays><meetingtimes>6:00PM - 6:30PM</meetingtimes>
+<students>
+<student><id>1</id><firstname>Sherlock</firstname><lastname>Holmes</lastname><overallgpa>4.0</overallgpa><emailaddress>sherlock.holmes@bekerstreet.com</emailaddress><mailingaddress><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></mailingaddress></student>
+<student><id>2</id><firstname>Mycroft</firstname><lastname>Holmes</lastname><overallgpa>4.0</overallgpa><emailaddress>mycroft.holmes@bekerstreet.com1</emailaddress><mailingaddress><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></mailingaddress></student>
+</students>
+<url>https://swen-646.umuc.edu</url>
+<classroomlocation>
+<location><roomnumber>2E</roomnumber><buildingname>1019</buildingname><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></location>
+</classroomlocation>
+</hybridcourse>
+</courses>
+</term>

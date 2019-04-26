@@ -8,7 +8,7 @@ import org.junit.Test;
  * @author ezerbo
  *
  */
-public class StudentTests {
+public class StudentTest {
 	
 	private String formattedValue = "<student><id>1</id><firstname>Sherlock</firstname>" + 
 			"<lastname>Holmes</lastname><overallgpa>4.0</overallgpa><emailaddress>sherlock.holmes@bekerstreet.com</emailaddress><mailingaddress>" + 

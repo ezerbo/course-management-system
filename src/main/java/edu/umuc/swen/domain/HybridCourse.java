@@ -4,6 +4,8 @@ import java.util.Date;
 import static edu.umuc.swen.domain.util.ParsingUtil.getPropertyValue;
 
 /**
+ * Domain class modeling a hybrid course
+ * 
  * @author ezerbo
  *
  */
@@ -26,6 +28,9 @@ public class HybridCourse extends Course {
 		this.classroomLocation = classroomLocation;
 	}
 	
+	/* (non-Javadoc)
+	 * @see edu.umuc.swen.domain.Course#generateSchedule()
+	 */
 	public String generateSchedule() {
 		return new StringBuilder()
 				.append(super.generateSchedule())

@@ -11,7 +11,7 @@ import org.junit.Test;
  * @author ezerbo
  *
  */
-public class OnlineCourseTests {
+public class OnlineCourseTest {
 
 	private String formattedValue = "<onlinecourse>\n" + 
 			"<id>1</id><termcode>FL2019</termcode><name>MATH101</name><startdate>04/20/2019</startdate><enddate>05/20/2019</enddate><meetingdays>T TH</meetingdays><meetingtimes>6:00PM - 6:30PM</meetingtimes>\n" + 
@@ -35,6 +35,7 @@ public class OnlineCourseTests {
 		course.addStudent(student2);
 		course.changeStudentGpa(1, 4.0);
 		course.changeStudentGpa(2, 3.0);
+		System.out.println(formattedValue);
 		assertEquals(formattedValue , course.toString());
 	}
 	

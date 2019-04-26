@@ -3,6 +3,8 @@ package edu.umuc.swen.domain;
 import static edu.umuc.swen.domain.util.ParsingUtil.getPropertyValue;
 
 /**
+ * Domain class modeling a location
+ * 
  * @author ezerbo
  *
  */
@@ -25,31 +27,54 @@ public class Location {
 		this.buildingName = buildingName;
 		this.address = address;
 	}
-
+	
+	/**
+	 * @return the roomNumber
+	 */
 	public String getRoomNumber() {
 		return roomNumber;
 	}
 
+	/**
+	 * @param roomNumber the roomNumber to set
+	 */
 	public void setRoomNumber(String roomNumber) {
 		this.roomNumber = roomNumber;
 	}
 
+	/**
+	 * @return the buildingName
+	 */
 	public String getBuildingName() {
 		return buildingName;
 	}
 
+	/**
+	 * @param buildingName the buildingName to set
+	 */
 	public void setBuildingName(String buildingName) {
 		this.buildingName = buildingName;
 	}
 
+	/**
+	 * @return the address
+	 */
 	public Address getAddress() {
 		return address;
 	}
 
+	/**
+	 * @param address the address to set
+	 */
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
+
+	/**
+	 * Formats a location (example: 1019 5E 221-B Baker Street London UK 188000)
+	 * 
+	 * @return the formatted location  
+	 */
 	public String format() {
 		return new StringBuilder()
 				.append(buildingName)

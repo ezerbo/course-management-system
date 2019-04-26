@@ -1,0 +1,17 @@
+<labcourse>
+<id>1</id><termcode>FL2019</termcode><name>MATH101</name><startdate>05/20/2019</startdate><enddate>05/20/2019</enddate><meetingdays>T TH</meetingdays><meetingtimes>6:00PM - 6:30PM</meetingtimes>
+<students>
+<student><id>1</id><firstname>Sherlock</firstname><lastname>Holmes</lastname><overallgpa>4.0</overallgpa><emailaddress>sherlock.holmes@bekerstreet.com</emailaddress><mailingaddress><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></mailingaddress></student>
+<student><id>2</id><firstname>Sherlock</firstname><lastname>Holmes</lastname><overallgpa>3.0</overallgpa><emailaddress>sherlock.holmes@bekerstreet.com</emailaddress><mailingaddress><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></mailingaddress></student>
+</students>
+<gradebook>
+<grade><studentid>1</studentid><gpa>4.0</gpa></grade>
+<grade><studentid>2</studentid><gpa>3.0</gpa></grade>
+</gradebook>
+<classroomlocation>
+<location><roomnumber>2E</roomnumber><buildingname>1019</buildingname><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></location>
+</classroomlocation>
+<labroomlocation>
+<location><roomnumber>5E</roomnumber><buildingname>1019</buildingname><address><buildingnumber>221-B</buildingnumber><street>Baker Street</street><city>London</city><state>UK</state><zipcode>188000</zipcode></address></location>
+</labroomlocation>
+</labcourse>

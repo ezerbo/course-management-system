@@ -3,7 +3,10 @@ package edu.umuc.swen.domain;
 import static edu.umuc.swen.domain.util.ParsingUtil.getPropertyValue;
 import static java.lang.Integer.parseInt;
 import static java.lang.Double.parseDouble;
+
 /**
+ * Domain class modeling a student
+ * 
  * @author ezerbo
  *
  */
@@ -21,6 +24,11 @@ public class Student {
 	
 	private Address mailingAddress;
 	
+	/**
+	 * Creates an instance of Student from its string representation
+	 * 
+	 * @param line String to parse student data from
+	 */
 	public Student(String line) {
 		this.id = parseInt(getPropertyValue(line, "id"));
 		this.firstName = getPropertyValue(line, "firstname");
