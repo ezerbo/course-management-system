@@ -17,7 +17,7 @@ public class ParsingUtil {
 	
 	/**
 	 * @param line String to parse the value of 'propertyName' from
-	 * @param propertyName Property for which the value is retrieved
+	 * @param property Property for which the value is retrieved
 	 * @return the value of 'propertyName'
 	 */
 	public static String getPropertyValue(String line, String property) {

@@ -127,7 +127,7 @@ public class TermTest {
 		term.addCourse(onlineCourse);
 		term.addCourse(labCourse);
 		System.out.println(term.generateCourseSchedule());
-		System.out.println("\n" + term.generateCourseSchedule(3));
+		System.out.println("\n" + term.generateCourseSchedule(1));
 		assertEquals("Days: T TH, Times: 6:00PM - 6:30PM, Location : (class: 1019 2E 221-B Baker Street London UK 188000, lab: 1019 2E 221-B Baker Street London UK 188000)", term.generateCourseSchedule(3));
 	}
 	

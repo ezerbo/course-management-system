@@ -4,13 +4,23 @@ import java.util.Date;
 import static edu.umuc.swen.domain.util.ParsingUtil.getPropertyValue;
 
 /**
+ * Domain class modeling an online course
+ * 
  * @author ezerbo
  *
  */
 public class OnlineCourse extends Course {
 	
+	/**
+	 * URL to the course
+	 */
 	private String url;
 
+	/**
+	 * Creates an instance of OnlineCourse using its string representation
+	 * 
+	 * @param line string to parse online course data from
+	 */
 	public OnlineCourse(String line) {
 		super(line);
 		this.url = getPropertyValue(line, "url");

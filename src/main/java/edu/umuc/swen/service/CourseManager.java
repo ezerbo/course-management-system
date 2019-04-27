@@ -132,7 +132,7 @@ public class CourseManager {
 	 * Finds a course using its ID
 	 * 
 	 * @param courseId Course identifier
-	 * @return
+	 * @return Course whose identifier is passed as parameter
 	 */
 	public Course getCourse(int courseId) {
 		return loadedTerm.getCourse(courseId);

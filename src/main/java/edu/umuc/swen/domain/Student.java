@@ -12,16 +12,34 @@ import static java.lang.Double.parseDouble;
  */
 public class Student {
 
+	/**
+	 * Student's identifier
+	 */
 	private int id;
 	
+	/**
+	 * Student's first name
+	 */
 	private String firstName;
 	
+	/**
+	 * Student's last name
+	 */
 	private String lastName;
 	
+	/**
+	 * Student's overall GPA
+	 */
 	private double overallGpa;
 	
+	/**
+	 * Student's email address
+	 */
 	private String emailAddress;
 	
+	/**
+	 * Student's mailing address
+	 */
 	private Address mailingAddress;
 	
 	/**

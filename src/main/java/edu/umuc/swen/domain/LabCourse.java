@@ -22,14 +22,20 @@ public class LabCourse extends Course {
 	 */
 	private final static int MAX_NUMBER_OF_STUDENTS = 10; //Class size is 10 for LabCourses
 	
+	/**
+	 * Location of the classroom
+	 */
 	private Location classroomLocation;
 	
+	/**
+	 * Location of the lab
+	 */
 	private Location labRoomLocation;
 
 	/**
 	 * Creates an instance of LabCourse using its string representation
 	 * 
-	 * @param line
+	 * @param line string from which lab course data is parsed from
 	 */
 	public LabCourse(String line) {
 		super(line);

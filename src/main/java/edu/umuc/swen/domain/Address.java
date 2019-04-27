@@ -10,14 +10,29 @@ import static edu.umuc.swen.domain.util.ParsingUtil.getPropertyValue;
  */
 public class Address {
 	
+	/**
+	 * The building number
+	 */
 	private String buildingNumber;
 	
+	/**
+	 * The street
+	 */
 	private String street;
 	
+	/**
+	 * The city
+	 */
 	private String city;
 	
+	/**
+	 * The state
+	 */
 	private String state;
 	
+	/**
+	 * The postal code
+	 */
 	private String zipCode;
 	
 	/**

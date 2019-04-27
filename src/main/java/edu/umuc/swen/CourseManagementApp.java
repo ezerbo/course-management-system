@@ -24,6 +24,13 @@ public class CourseManagementApp {
 	private final static String PATH_TO_FILES = "./term-data/"; // Where files are created and loaded from. 
 
 	public static void main(String[] args) {
+		run();
+	}
+	
+	/**
+	 * Runs a specific scenario
+	 */
+	private static void run() {
 		Scanner scanner = new Scanner(System.in);
 		int choice = 0;
 		do {

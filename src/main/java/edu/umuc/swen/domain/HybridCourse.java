@@ -11,8 +11,14 @@ import static edu.umuc.swen.domain.util.ParsingUtil.getPropertyValue;
  */
 public class HybridCourse extends Course {
 	
+	/**
+	 * URL to the course
+	 */
 	private String url;
 	
+	/**
+	 * Location of the classroom
+	 */
 	private Location classroomLocation;
 
 	public HybridCourse(String line) {

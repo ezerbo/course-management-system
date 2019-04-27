@@ -34,22 +34,49 @@ public abstract class Course {
 	 */
 	private final static int MAX_NUMBER_OF_STUDENTS = 20;
 	
+	/**
+	 * Course identifier
+	 */
 	protected int id;
 	
+	/**
+	 * Name of the course
+	 */
 	protected String name;
 	
+	/**
+	 * Start date
+	 */
 	protected Date startDate;
 	
+	/**
+	 * End date
+	 */
 	protected Date endDate;
 	
+	/**
+	 * Meeting days, example: "T TH" for Tuesdays and Thursdays
+	 */
 	protected String meetingDays;
 	
+	/**
+	 * Meeting times, example: "6:00 PM - 7:00PM"
+	 */
 	protected String meetingTimes;
 	
+	/**
+	 * List of students
+	 */
 	protected List<Student> students = new LinkedList<>();
 	
+	/**
+	 * Gradebook associated to the course
+	 */
 	protected Map<Integer, Double> gradebook = new HashMap<>();
 	
+	/**
+	 * Code of the term a course is added to
+	 */
 	protected String termCode;
 	
 	/**
@@ -190,7 +217,7 @@ public abstract class Course {
 	 * Parses student records, separated by new lines, from a string.
 	 * It returns an empty list when no student records are found
 	 * Otherwise, it splits the string passed as parameter and for each student record,
-	 * it creates an instance of {@Student}.
+	 * it creates an instance of Student.
 	 * It then collects all the records into a list and returns it.
 	 * 
 	 * 
@@ -220,6 +247,17 @@ public abstract class Course {
 			grades.put(studentId, gpa);
 		});
 		return grades;
+	}
+	
+	/**
+	 * Finds a student's GPA using their identifier
+	 * 
+	 * @param studentId Identifier of student
+	 * @return student's GPA
+	 */
+	public Double getStudentGPA(Integer studentId) {
+		return gradebook.get(studentId);
+		
 	}
 	
 	/**

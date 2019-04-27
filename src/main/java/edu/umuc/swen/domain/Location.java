@@ -10,10 +10,19 @@ import static edu.umuc.swen.domain.util.ParsingUtil.getPropertyValue;
  */
 public class Location {
 
+	/**
+	 * The room number
+	 */
 	private String roomNumber;
 	
+	/**
+	 * The building number
+	 */
 	private String buildingName;
 	
+	/**
+	 * The address of the location
+	 */
 	private Address address;
 	
 	public Location(String line) {

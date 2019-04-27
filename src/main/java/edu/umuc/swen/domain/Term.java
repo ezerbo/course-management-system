@@ -20,12 +20,26 @@ import edu.umuc.swen.error.InvalidOperationException;
  */
 public class Term {
 	
+	/**
+	 * Maximum number of courses that can be loaded into a term, set to 6
+	 */
 	private final static int MAX_NUMBER_OF_COURSE = 6; //06 Courses per term.
 
+	/**
+	 * Code of the term
+	 */
 	private String termCode;
 	
+	/**
+	 * Course available in this term
+	 */
 	private List<Course> courses = new LinkedList<>();
 	
+	/**
+	 * Creates an instance of Term and loads data from a file
+	 * 
+	 * @param fileName File to parse term data from
+	 */
 	public Term(String fileName) {
 		String content = loadFromFile(fileName);
 		this.termCode = getPropertyValue(content, "termcode");
@@ -45,9 +59,9 @@ public class Term {
 	}
 	
 	/**
-	 * @param course
-	 * @throws InvalidOperationException
-	 * @throws CourseOutOfRangeException
+	 * @param course The course to be added
+	 * @throws InvalidOperationException When course has already stated or ended
+	 * @throws CourseOutOfRangeException When the maximum number of courses is reached
 	 */
 	public void addCourse(Course course) throws InvalidOperationException, CourseOutOfRangeException {
 		if(course.hasStarted() || course.hasEnded())
